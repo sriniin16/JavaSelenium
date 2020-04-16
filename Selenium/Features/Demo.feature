@@ -1,42 +1,33 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
-@tag
-Feature: Title of your feature
-  I want to use this template for my feature file
+Feature: AutomationPractice
 
-  @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
 
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
+  Scenario: Search product in search bar
+    Given I am on the automation practice landing page
+    When I search for "Dress" in the search bar
+    Then I should be displayed with the search results
+    
+	Scenario: search product and add item to cart
+		Given I am on the automation practice landing page
+		When I search for "Dress" in the search bar
+    Then I should be displayed with the search results
+    When I select the item with multi color option
+    And Verify the product description page
+    And I verify the color as "Yellow" and quantity update
+    And I add the item to the cart
+    Then I should be able to verify the items in the summary page
+    
+	Scenario: add more items and verify item and qunatity update    
+		Given I am on the automation practice landing page
+		When I search for "Dress" in the search bar
+    Then I should be displayed with the search results
+    When I select the item with multi color option
+    And Verify the product description page
+    And I verify the color as "Yellow" and quantity update
+    And I add the item to the cart
+    Then I should be able to verify the items in the summary page
+    When I add item with color "Blue" to the cart     
+    And I update quantity for one item
+    And I remove the last item in the cart
+    Then I verify the items in the summary page
 
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
+
